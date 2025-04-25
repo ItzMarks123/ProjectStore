@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venda de Bot Discord</title>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1e1e1e;
+      padding: 20px;
+      text-align: center;
+    }
+    form {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #1e1e1e;
+      border-radius: 8px;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    input, textarea {
+      background: #2a2a2a;
+      color: white;
+    }
+    button {
+      background: #5865f2;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #4752c4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Project | Store</h1>
+    <p>Peça o seu bot personalizado agora!</p>
+  </header>
+
+  <form id="botForm">
+    <label for="nome">ssu nome:</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <label for="email">Seu e-mail:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="descricao">Descrição (Coloque seu discord acima do jeito que voce quer o bot ):</label>
+    <textarea id="descricao" name="descricao" rows="5" required></textarea>
+
+    <button type="submit">Enviar Pedido</button>
+  </form>
+
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "KcWdkmY07T9afiADz",
+      });
+   })();
+
+    document.getElementById("botForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      emailjs.send("service_bouth0g", "template_8hp99zq", {
+        from_name: document.getElementById("nome").value,
+        from_email: document.getElementById("email").value,
+        message: document.getElementById("descricao").value
+      }).then(function(response) {
+        alert("Pedido enviado com sucesso!");
+      }, function(error) {
+        alert("Erro ao enviar. Tente novamente.");
+      });
+    });
+  </script>
+</body>
+  </html>
